@@ -97,7 +97,15 @@ site-footer,footer.site-footer{background:var(--ink);padding:2.5rem}
 
 /* ── HERO ── */
 .hero{height:100vh;min-height:600px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding-top:70px}
-.hero-bg{position:absolute;inset:0;background:url('https://i.imgur.com/CrGPGmy.png') center/cover;animation:zoom 25s ease-in-out infinite alternate;filter:brightness(0.35) saturate(0.7)}
+.hero-bg{position:absolute;inset:0;background:url('https://i.imgur.com/hrQqTba.png') center/cover;animation:zoom 25s ease-in-out infinite alternate}
+/* Fondo sutil local en secciones claras */
+.arroces-section,.historia-section,.pedido-section{position:relative}
+.arroces-section::before,.historia-section::before,.pedido-section::before{
+  content:'';position:absolute;inset:0;
+  background:url('https://i.imgur.com/CrGPGmy.png') center/cover fixed;
+  opacity:0.06;pointer-events:none;z-index:0
+}
+.arroces-section>*,.historia-section>*,.pedido-section>*{position:relative;z-index:1}
 @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.07)}}
 .hero-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,14,0.97) 0%,rgba(13,31,14,0.5) 55%,rgba(13,31,14,0.05) 100%)}
 .hero-grad2{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,31,14,0.5) 0%,transparent 55%)}
