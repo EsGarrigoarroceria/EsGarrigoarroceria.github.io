@@ -235,10 +235,13 @@ form.res-form{background:#fff;padding:2.5rem;box-shadow:0 4px 30px rgba(27,67,50
 <button class="fab-top" id="fabTop"><i class="fas fa-arrow-up"></i></button>
 <div class="toast" id="toast"></div>
 <script>
-function toggleMob(){document.getElementById('mobMenu').classList.toggle('open')}
-const fabTop=document.getElementById('fabTop');
-window.addEventListener('scroll',()=>fabTop.classList.toggle('show',scrollY>400));
-fabTop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+function toggleMob(){
+  var m=document.getElementById('mobMenu');
+  m.classList.toggle('open');
+}
+var fabTop=document.getElementById('fabTop');
+window.addEventListener('scroll',function(){fabTop.classList.toggle('show',window.scrollY>400)});
+fabTop.onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};
 function enviarReserva(e){
   e.preventDefault();
   const n=document.getElementById('nombre').value.trim();
@@ -249,9 +252,13 @@ function enviarReserva(e){
   const a=document.getElementById('arroz').value;
   const no=document.getElementById('notas').value.trim();
   if(!n||!t||!d||!h){showToast('Completa los campos obligatorios');return}
-  let txt=;
-  if(a)txt+=;
-  if(no)txt+=;
+  var txt='Hola Es Garrigo! Quiero reservar mesa.%0A';
+  txt+='Nombre: '+n+'%0A';
+  txt+='Telefono: '+t+'%0A';
+  txt+='Dia: '+d+' a las '+h+'%0A';
+  txt+='Personas: '+p+'%0A';
+  if(a)txt+='Arroz: '+a+'%0A';
+  if(no)txt+='Notas: '+no+'%0A';
   window.open('https://wa.me/34671123456?text='+txt,'_blank');
   document.getElementById('formReserva').reset();
   showToast('✓ Redirigiendo a WhatsApp…');
